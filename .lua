@@ -33,7 +33,7 @@ local Window = Rayfield:CreateWindow({
 
 local UpgradeTab = Window:CreateTab("💎 Полная Версия")
 UpgradeTab:CreateParagraph({Title = "🚀 Преимущества полной версии", Content = ""})
-UpgradeTab:CreateLabel("✅ ESP для ВСЕХ брендов (включая полный список Chrome Hearts)")
+UpgradeTab:CreateLabel("✅ ESP для ВСЕХ брендов (Включая каждый бренд с новейшей аналитикой)")
 UpgradeTab:CreateLabel("✅ AutoBuy (Автоматическая покупка выгодных вещей)")
 UpgradeTab:CreateLabel("✅ AutoSell (Автоматическая продажа инвентаря)")
 UpgradeTab:CreateLabel("✅ Расширенная информация в ESP (показ выгоды)")
