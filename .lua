@@ -14,7 +14,7 @@ task.spawn(function()
     }
     for _, priceTable in ipairs(tablesToMerge) do
         for name, price in pairs(priceTable) do
-            masterPriceTable[name] = true
+            masterPriceTable[name] = price
         end
         task.wait()
     end
@@ -103,13 +103,21 @@ function UpdatePayOffESP()
 
             if clothingPart and prompt and prompt.Enabled and prompt.ActionText ~= "Повесить" then
                 local clothName = prompt.ObjectText
-                if masterPriceTable[clothName] then
-                    seenThisUpdate[clothingPart] = true
-                    if not activeHighlights[clothingPart] then
-                        local newHighlight = GetOrCreateHighlight()
-                        newHighlight.Adornee = clothingPart
-                        newHighlight.Parent = clothingPart
-                        activeHighlights[clothingPart] = newHighlight
+                local payOffPrice = masterPriceTable[clothName]
+                
+                if payOffPrice then
+                    local currentPriceText = string.gsub(prompt.ActionText, "%D+", "")
+                    if currentPriceText and currentPriceText ~= "" then
+                        local currentPrice = tonumber(currentPriceText)
+                        if currentPrice and currentPrice <= payOffPrice then
+                            seenThisUpdate[clothingPart] = true
+                            if not activeHighlights[clothingPart] then
+                                local newHighlight = GetOrCreateHighlight()
+                                newHighlight.Adornee = clothingPart
+                                newHighlight.Parent = clothingPart
+                                activeHighlights[clothingPart] = newHighlight
+                            end
+                        end
                     end
                 end
             end
