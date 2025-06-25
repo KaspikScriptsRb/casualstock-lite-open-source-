@@ -126,7 +126,7 @@ end
 
 local EspTab = Window:CreateTab("ESP")
 EspTab:CreateToggle({
-    Name = "ESP на топ бренды (LITE)",
+    Name = "ESP (LITE)",
     Info = "Подсвечивает вещи от Balenciaga, Bape, Stone Island и др. (включая ограниченный список Chrome Hearts).",
     CurrentValue = espPayOffClothesEnabled,
     Callback = function(Value)
